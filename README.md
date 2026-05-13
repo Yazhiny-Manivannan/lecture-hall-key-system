@@ -101,12 +101,7 @@ node server.js
 ---
 
 How to Run the Project
-npm run dev
-
-
-OR
-
-node server.js
+npm start
 
 ---
 
