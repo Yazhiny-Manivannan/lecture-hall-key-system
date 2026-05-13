@@ -95,13 +95,13 @@ PORT=5000
 MONGO_URI=your_mongodb_connection_string
 
 
-5. Run server
-node server.js
+5. Run server: 
+npm start
 
 ---
 
-How to Run the Project
-npm start
+How to Run the Project:
+
 
 ---
 
