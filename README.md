@@ -2,22 +2,22 @@ Lecture Hall Key Request Management System
 
 ---
 
-Project Title
+Project Title: 
 Lecture Hall Key Request Management System
 
 ---
 
-Problem Description
+Problem Description: 
 In many universities, lecture hall keys are still managed manually. This leads to delays, missing records, and confusion about who has taken or returned keys. There is no proper digital system to track and manage key requests efficiently.
 
 ---
 
-Proposed Solution
+Proposed Solution: 
 This system provides a RESTful API-based solution that allows users to request lecture hall keys, track their status, and manage returns digitally. It improves efficiency, transparency, and record management using Node.js, Express.js, and MongoDB.
 
 ---
 
-Features
+Features: 
 - Create key request
 - View all key requests
 - View single request by ID
@@ -27,7 +27,7 @@ Features
 
 ---
 
-Technologies Used
+Technologies Used: 
 - Node.js
 - Express.js
 - MongoDB
@@ -37,7 +37,7 @@ Technologies Used
 
 ---
 
-API Endpoints (with Examples)
+API Endpoints (with Examples): 
 
 1. Create Key Request
 POST `/api/requests`
