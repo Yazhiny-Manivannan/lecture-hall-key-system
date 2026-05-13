@@ -81,7 +81,7 @@ DELETE `/api/requests/:id`
 Setup Instructions
 
 1. Clone the repository
-git clone https://github.com/your-username/lecture-hall-key-system.git
+git clone https://github.com/Yazhiny-Manivannan/lecture-hall-key-system.git
 
 2. Go to project folder
 cd lecture-hall-key-system
@@ -105,7 +105,7 @@ How to Run the Project:
 
 ---
 
-Testing
+Testing: 
 Use Postman to test all API endpoints.
 
 ---
