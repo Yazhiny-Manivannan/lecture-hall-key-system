@@ -1,23 +1,29 @@
 import express from "express";
 import mongoose from "mongoose"  
-import bodyParser  from "body-parser";   
+import dotenv from "dotenv";   
+import bodyParser  from "body-parser";  
+
+import authRoutes from "./routes/authRoutes.js";
 import keyRoutes from "./routes/keyRoutes.js";
 
-import dotenv from "dotenv";   
 dotenv.config();
 
 const app = express();
 
+// Middleware
 app.use(bodyParser.json());
+
+//Routes
+app.use("/api/auth", authRoutes);
 app.use("/api/keys", keyRoutes);
 
-const PORT = process.env.PORT || 5000;
-
-const MONGOURL = process.env.MONGO_URL;
-
+// Home page
 app.get("/", (req, res) => {
     res.send("Lecture Hall Key Request API is running");
 });
+
+const PORT = process.env.PORT || 5000;
+const MONGOURL = process.env.MONGO_URL;
 
 mongoose
 .connect(MONGOURL)

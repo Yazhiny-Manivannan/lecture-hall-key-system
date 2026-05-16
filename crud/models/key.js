@@ -14,26 +14,51 @@ const keySchema = new mongoose.Schema(
       unique: true,
     },
 
+    building: {
+      type: String,
+      default: "Main Campus",
+    },
+  
     status: {
       type: String,
-      enum: ["available", "borrowed"],
+      enum: ["available", "in_use", "lost"],
       default: "available",
     },
 
-    borrowedBy: {
-      type: String,
+    openedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
       default: null,
     },
 
-    borrowedDate: {
+    openedTime: {
       type: Date,
       default: null,
     },
 
-    returnDate: {
+    returnedTime: {
       type: Date,
       default: null,
     },
+
+    history: [
+      {
+        action: {
+          type: String,
+          enum: ["opened", "closed"],
+        },
+        user: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+          required: true,
+        },
+        time: {
+          type: Date,
+          default: Date.now,
+        },
+      },
+    ],
+
   }
 );
 

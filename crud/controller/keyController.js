@@ -1,4 +1,4 @@
-import Key from "../model/key.js";
+import Key from "../models/key.js";
 
 export const createKey = async (req, res) => {
   try {
@@ -14,8 +14,8 @@ export const createKey = async (req, res) => {
         const savedKey = await keyData.save();
 
         res.status(201 ).json(savedKey)
-  } catch (error) {
-    res.status(500).json({error : "Internal Server Error. "});
+  }catch (error) {
+    res.status(500).json({error:"Internal server error."});
   }
 };
 
