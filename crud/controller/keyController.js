@@ -28,7 +28,7 @@ export const getKeys = async (req, res) => {
       return res.status(404).json({message:"Keys not Found."});
     } 
 
-    es.status(200).json(keys);
+    res.status(200).json(keys);
 
   }catch (error) {
     res.status(500).json({error:"Internal server error."});

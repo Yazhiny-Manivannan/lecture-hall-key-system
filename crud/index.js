@@ -1,13 +1,15 @@
 import express from "express";
 import mongoose from "mongoose"  
-import bodyParser  from "body-parser";  
-import dotenv from "dotenv";    
+import bodyParser  from "body-parser";   
+import keyRoutes from "./routes/keyRoutes.js";
+
+import dotenv from "dotenv";   
+dotenv.config();
 
 const app = express();
 
 app.use(bodyParser.json());
-
-dotenv.config();
+app.use("/api/keys", keyRoutes);
 
 const PORT = process.env.PORT || 5000;
 
@@ -27,4 +29,6 @@ mongoose
     });
 })
 
-.catch((error) => console.log(error));    
+  .catch((error) => {
+    console.error("MongoDB connection failed:", error);
+  });
