@@ -1,112 +1,220 @@
-Lecture Hall Key Request Management System
+---
+
+#  Lecture Hall Key Management System
 
 ---
 
-Project Title: 
-Lecture Hall Key Request Management System
+##  Project Title
+
+Lecture Hall Key Management System
 
 ---
 
-Problem Description: 
-In many universities, lecture hall keys are still managed manually. This leads to delays, missing records, and confusion about who has taken or returned keys. There is no proper digital system to track and manage key requests efficiently.
+## Problem Description
+
+In many universities, lecture hall keys are still managed manually using logbooks. This leads to delays, missing records, lack of accountability, and confusion about who has taken or returned keys.
+
+There is no centralized digital system to track key usage efficiently.
 
 ---
 
-Proposed Solution: 
-This system provides a RESTful API-based solution that allows users to request lecture hall keys, track their status, and manage returns digitally. It improves efficiency, transparency, and record management using Node.js, Express.js, and MongoDB.
+## Proposed Solution
+
+This project provides a **RESTful API-based backend system** to manage lecture hall keys digitally.
+
+It allows secure authentication, role-based access control, and real-time tracking of key status using Node.js, Express.js, and MongoDB.
+
+The system improves efficiency, transparency, and accountability.
 
 ---
 
-Features: 
-- Create key request
-- View all key requests
-- View single request by ID
-- Update request status (Approved / Returned)
-- Delete key request
-- Track request history
+## Features
+
+* User Authentication using JWT
+* Role-Based Access Control (Admin & Staff)
+* Create lecture hall keys (Admin only)
+* View all keys
+* View single key details
+* Update key status (borrowed / available)
+* Delete key records (Admin only)
+* Track key usage history
+* MongoDB database integration
 
 ---
 
-Technologies Used: 
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
-- Postman (API Testing)
-- GitHub (Version Control)
+## Technologies Used
+
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+* JWT (Authentication)
+* bcryptjs
+* Postman (API Testing)
+* Git & GitHub
 
 ---
 
-API Endpoints (with Examples): 
+## API Endpoints (with Examples)
 
-1. Create Key Request
-POST `/api/requests`
+---
+
+### Authentication
+
+#### Register User
+
+```http
+POST /api/auth/register
+```
 
 ```json
 {
-  "studentName": "Yazhiny",
-  "lectureHall": "A101",
-  "status": "Pending"
+  "name": "Admin",
+  "email": "admin@gmail.com",
+  "password": "123456",
+  "role": "admin"
 }
 ```
 
 ---
 
-2. Get All Requests
-GET `/api/requests`
+#### Login User
 
----
-
-3. Get Request by ID
-GET `/api/requests/:id`
-
----
-
-4. Update Request
-PUT `/api/requests/:id`
+```http
+POST /api/auth/login
+```
 
 ```json
 {
-  "status": "Returned"
+  "email": "admin@gmail.com",
+  "password": "123456"
 }
 ```
 
 ---
 
-5. Delete Request
-DELETE `/api/requests/:id`
+### Key Management
 
 ---
 
-Setup Instructions
+#### Create Key (Admin Only)
 
-1. Clone the repository
+```http
+POST /api/keys/create
+```
+
+```json
+{
+  "lectureHall": "LH-01",
+  "keyNumber": "KEY-1001",
+  "building": "Main Campus"
+}
+```
+
+---
+
+#### Get All Keys
+
+```http
+GET /api/keys/getallkeys
+```
+
+---
+
+#### Get Single Key
+
+```http
+GET /api/keys/getsinglekey/:id
+```
+
+---
+
+#### Update Key
+
+```http
+PUT /api/keys/update/:id
+```
+
+```json
+{
+  "status": "borrowed"
+}
+```
+
+---
+
+#### Delete Key
+
+```http
+DELETE /api/keys/delete/:id
+```
+
+---
+
+## Setup Instructions
+
+---
+
+### 1. Clone the repository
+
+```bash
 git clone https://github.com/Yazhiny-Manivannan/lecture-hall-key-system.git
+```
 
-2. Go to project folder
+---
+
+### 2. Navigate to project folder
+
+```bash
 cd lecture-hall-key-system
+```
 
-3. Install dependencies
+---
+
+### 3. Install dependencies
+
+```bash
 npm install
+```
 
-4. Create `.env` file
+---
 
+### 4. Create `.env` file
+
+```env
 PORT=5000
-MONGO_URI=your_mongodb_connection_string
+MONGO_URL=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+```
 
+---
 
-5. Run server: 
+## How to Run the Project
+
+---
+
+### Start server
+
+```bash
 npm start
+```
+
+Server will run at:
+
+```txt
+http://localhost:5000
+```
 
 ---
 
-How to Run the Project:
+##Testing
 
+Use Postman to test:
 
----
-
-Testing: 
-Use Postman to test all API endpoints.
+1. Register user
+2. Login user and get JWT token
+3. Add token in Authorization (Bearer Token)
+4. Test all key APIs
 
 ---
 
