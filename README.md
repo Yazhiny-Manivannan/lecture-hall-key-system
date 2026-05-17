@@ -1,10 +1,10 @@
 ---
 
-#  Lecture Hall Key Management System
+# Lecture Hall Key Management System
 
 ---
 
-##  Project Title
+## Project Title
 
 Lecture Hall Key Management System
 
@@ -20,38 +20,76 @@ There is no centralized digital system to track key usage efficiently.
 
 ## Proposed Solution
 
-This project provides a **RESTful API-based backend system** to manage lecture hall keys digitally.
+This project provides a **full-stack web-based system** to manage lecture hall keys digitally.
 
-It allows secure authentication, role-based access control, and real-time tracking of key status using Node.js, Express.js, and MongoDB.
+It includes:
 
-The system improves efficiency, transparency, and accountability.
+* Secure authentication using JWT
+* Role-based access control (Admin & Staff)
+* Real-time key tracking
+* RESTful API backend (Node.js + Express)
+* Interactive frontend (React)
+
+This improves efficiency, transparency, and accountability in key management.
 
 ---
 
 ## Features
 
-* User Authentication using JWT
-* Role-Based Access Control (Admin & Staff)
+### Authentication
+
+* User registration and login
+* JWT-based secure authentication
+* Role-based access (Admin / Staff)
+
+### Key Management
+
 * Create lecture hall keys (Admin only)
 * View all keys
 * View single key details
-* Update key status (borrowed / available)
+* Update key status (available / in_use / lost)
 * Delete key records (Admin only)
-* Track key usage history
-* MongoDB database integration
+
+### Tracking System
+
+* Track who opened a key
+* Store opened and returned time
+* Maintain key history logs
+
+### Frontend Features
+
+* Modern login UI
+* Dashboard for key management
+* Role-based UI rendering
+* API integration using Axios
 
 ---
 
 ## Technologies Used
 
+### Backend
+
 * Node.js
 * Express.js
 * MongoDB
 * Mongoose
-* JWT (Authentication)
+* JWT Authentication
 * bcryptjs
+* CORS
+* Postman (Testing)
+
+### Frontend
+
+* React.js
+* Vite
+* Axios
+* React Router DOM
+
+### Tools
+
 * Postman (API Testing)
-* Git & GitHub
+* Git & GitHub (version control)
+* VS Code (frontend and backend development)
 
 ---
 
@@ -70,7 +108,7 @@ POST /api/auth/register
 ```json
 {
   "name": "Admin",
-  "email": "admin@gmail.com",
+  "email": "admin@test.com",
   "password": "123456",
   "role": "admin"
 }
@@ -86,7 +124,7 @@ POST /api/auth/login
 
 ```json
 {
-  "email": "admin@gmail.com",
+  "email": "admin@test.com",
   "password": "123456"
 }
 ```
@@ -95,12 +133,10 @@ POST /api/auth/login
 
 ### Key Management
 
----
-
 #### Create Key (Admin Only)
 
 ```http
-POST /api/keys/create
+POST /api/keys
 ```
 
 ```json
@@ -116,7 +152,7 @@ POST /api/keys/create
 #### Get All Keys
 
 ```http
-GET /api/keys/getallkeys
+GET /api/keys
 ```
 
 ---
@@ -124,7 +160,7 @@ GET /api/keys/getallkeys
 #### Get Single Key
 
 ```http
-GET /api/keys/getsinglekey/:id
+GET /api/keys/:id
 ```
 
 ---
@@ -132,12 +168,12 @@ GET /api/keys/getsinglekey/:id
 #### Update Key
 
 ```http
-PUT /api/keys/update/:id
+PUT /api/keys/:id
 ```
 
 ```json
 {
-  "status": "borrowed"
+  "status": "in_use"
 }
 ```
 
@@ -146,7 +182,7 @@ PUT /api/keys/update/:id
 #### Delete Key
 
 ```http
-DELETE /api/keys/delete/:id
+DELETE /api/keys/:id
 ```
 
 ---
@@ -155,7 +191,7 @@ DELETE /api/keys/delete/:id
 
 ---
 
-### 1. Clone the repository
+### Clone Repository
 
 ```bash
 git clone https://github.com/Yazhiny-Manivannan/lecture-hall-key-system.git
@@ -163,23 +199,14 @@ git clone https://github.com/Yazhiny-Manivannan/lecture-hall-key-system.git
 
 ---
 
-### 2. Navigate to project folder
+### Backend Setup
 
 ```bash
-cd lecture-hall-key-system
-```
-
----
-
-### 3. Install dependencies
-
-```bash
+cd backend
 npm install
 ```
 
----
-
-### 4. Create `.env` file
+Create `.env` file:
 
 ```env
 PORT=5000
@@ -189,32 +216,64 @@ JWT_SECRET=your_secret_key
 
 ---
 
+### Frontend Setup
+
+```bash
+cd frontend
+npm install
+```
+
+Create `.env` file:
+
+```env
+VITE_API_BASE_URL=http://localhost:5000
+```
+
+---
+
 ## How to Run the Project
 
 ---
 
-### Start server
+### Start Backend
 
 ```bash
+cd backend
 npm start
 ```
 
-Server will run at:
+Server runs at:
 
-```txt
+```
 http://localhost:5000
 ```
 
 ---
 
-##Testing
+### Start Frontend
 
-Use Postman to test:
+```bash
+cd frontend
+npm run dev
+```
 
-1. Register user
-2. Login user and get JWT token
-3. Add token in Authorization (Bearer Token)
-4. Test all key APIs
+Frontend runs at:
+
+```
+http://localhost:5174
+```
+
+---
+
+## Summary
+
+This is a **full-stack Lecture Hall Key Management System** designed to replace manual logbook tracking with a secure digital solution.
+
+It ensures:
+
+* Security 
+* Transparency 
+* Efficiency 
 
 ---
 
