@@ -13,7 +13,7 @@ const styles = `
     --surface: #181818;
     --border: #252525;
     --text: #F0EDE8;
-    --text-muted: #666666;
+    --text-muted: ##A0A0A0;
     --accent: #3B82F6;
     --danger: #FF5050;
     --font-display: 'Syne', sans-serif;
